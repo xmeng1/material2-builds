@@ -16814,18 +16814,19 @@ $mat-dark-theme-foreground: (
   .mat-input-placeholder {
     color: $input-placeholder-color;
 
-    // :focus is applied to the input, but we apply mat-focused to the other elements
-    // that need to listen to it.
-    .mat-focused & {
-      color: $input-floating-placeholder-color;
+  }
 
-      &.mat-accent {
-        color: $input-underline-color-accent;
-      }
-      &.mat-warn {
-        color: $input-underline-color-warn;
-      }
-    }
+  // :focus is applied to the input, but we apply mat-focused to the other elements
+  // that need to listen to it.
+  .mat-focused .mat-input-placeholder {
+    color: $input-floating-placeholder-color;
+  }
+
+  .mat-focused .mat-input-placeholder.mat-accent{
+    color: $input-underline-color-accent;
+  }
+  .mat-focused .mat-input-placeholder.mat-warn {
+    color: $input-underline-color-warn;
   }
 
   .mat-input-element:disabled {
@@ -16845,13 +16846,13 @@ $mat-dark-theme-foreground: (
 
     .mat-input-ripple {
       background-color: $input-underline-focused-color;
+    }
 
-      &.mat-accent {
-        background-color: $input-underline-color-accent;
-      }
-      &.mat-warn {
-        background-color: $input-underline-color-warn;
-      }
+    .mat-input-ripple.mat-accent {
+      background-color: $input-underline-color-accent;
+    }
+    .mat-input-ripple.mat-warn {
+      background-color: $input-underline-color-warn;
     }
   }
 
@@ -30787,38 +30788,38 @@ $mat-dark-theme-foreground: (
     background-color: $mat-slider-off-color;
   }
 
-  .mat-slider-track-fill,
-  .mat-slider-thumb,
-  .mat-slider-thumb-label {
-    .mat-primary & {
-      background-color: mat-color($primary);
-    }
+  .mat-primary .mat-slider-track-fill,
+  .mat-primary .mat-slider-thumb,
+  .mat-primary .mat-slider-thumb-label {
+    background-color: mat-color($primary);
+  }
 
-    .mat-accent & {
-      background-color: mat-color($accent);
-    }
+  .mat-accent .mat-slider-track-fill,
+  .mat-accent .mat-slider-thumb,
+  .mat-accent .mat-slider-thumb-label {
+    background-color: mat-color($accent);
+  }
 
-    .mat-warn & {
-      background-color: mat-color($warn);
-    }
+  .mat-warn .mat-slider-track-fill,
+  .mat-warn .mat-slider-thumb,
+  .mat-warn .mat-slider-thumb-label{
+    background-color: mat-color($warn);
   }
 
   .mat-slider-focus-ring {
     background-color: $mat-slider-focus-ring-color;
   }
 
-  .mat-slider-thumb-label-text {
-    .mat-primary & {
-      color: mat-color($primary, default-contrast);
-    }
+  .mat-primary .mat-slider-thumb-label-text {
+    color: mat-color($primary, default-contrast);
+  }
 
-    .mat-accent & {
-      color: mat-color($accent, default-contrast);
-    }
+  .mat-accent .mat-slider-thumb-label-text {
+    color: mat-color($accent, default-contrast);
+  }
 
-    .mat-warn & {
-      color: mat-color($warn, default-contrast);
-    }
+  .mat-warn .mat-slider-thumb-label-text {
+    color: mat-color($warn, default-contrast);
   }
 
   .mat-slider:hover,
@@ -30834,50 +30835,52 @@ $mat-dark-theme-foreground: (
     .mat-slider-thumb {
       background-color: $mat-slider-disabled-color;
     }
-
-    &:hover {
-      .mat-slider-track-background {
-        background-color: $mat-slider-disabled-color;
-      }
+  }
+  .mat-slider-disabled:hover {
+    .mat-slider-track-background {
+      background-color: $mat-slider-disabled-color;
     }
   }
-
   .mat-slider-min-value {
     .mat-slider-focus-ring {
       background-color: $mat-slider-focus-ring-min-value-color;
     }
+  }
 
-    &.mat-slider-thumb-label-showing {
-      .mat-slider-thumb,
-      .mat-slider-thumb-label {
-        background-color: $mat-slider-labeled-min-value-thumb-color;
-      }
 
-      &.cdk-focused {
-        .mat-slider-thumb,
-        .mat-slider-thumb-label {
-          background-color: $mat-slider-labeled-min-value-thumb-label-color;
-        }
-      }
+  .mat-slider-min-value.mat-slider-thumb-label-showing {
+    .mat-slider-thumb,
+    .mat-slider-thumb-label {
+      background-color: $mat-slider-labeled-min-value-thumb-color;
     }
 
-    &:not(.mat-slider-thumb-label-showing) {
-      .mat-slider-thumb {
-        border-color: $mat-slider-off-color;
-        background-color: transparent;
-      }
+  }
 
-      &:hover,
-      &.cdk-focused {
-        .mat-slider-thumb {
-          border-color: $mat-slider-off-focused-color;
-        }
-
-        &.mat-slider-disabled .mat-slider-thumb {
-          border-color: $mat-slider-disabled-color;
-        }
-      }
+  .mat-slider-min-value.mat-slider-thumb-label-showing.cdk-focused {
+    .mat-slider-thumb,
+    .mat-slider-thumb-label {
+      background-color: $mat-slider-labeled-min-value-thumb-label-color;
     }
+  }
+
+  .mat-slider-min-value:not(.mat-slider-thumb-label-showing) {
+    .mat-slider-thumb {
+      border-color: $mat-slider-off-color;
+      background-color: transparent;
+    }
+
+  }
+
+  .mat-slider-min-value:not(.mat-slider-thumb-label-showing):hover,
+  .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused {
+    .mat-slider-thumb {
+      border-color: $mat-slider-off-focused-color;
+    }
+
+  }
+
+  .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused.mat-slider-disabled .mat-slider-thumb {
+    border-color: $mat-slider-disabled-color;
   }
 }
 
@@ -32412,10 +32415,10 @@ $mat-dark-theme-foreground: (
 
   .mat-tab-label, .mat-tab-link {
     color: currentColor;
+  }
 
-    &.mat-tab-disabled {
-      color: mat-color($foreground, disabled-text);
-    }
+  .mat-tab-label.mat-tab-disabled, .mat-tab-link.mat-tab-disabled {
+    color: mat-color($foreground, disabled-text);
   }
 }
 
